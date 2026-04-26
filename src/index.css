@@ -3951,3 +3951,127 @@ vercel-live-feedback,
 vercel-toolbar {
     display: none !important;
 }
+
+/* Featured Showcase (Home Page) */
+.featured-showcase {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem;
+    margin: 0 auto;
+}
+
+.featured-showcase__content {
+    flex: 1;
+    text-align: left;
+}
+
+.showcase-title {
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+    font-size: clamp(2rem, 5vw, 4rem);
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    margin-bottom: 1.5rem;
+    color: #e8e3d5;
+    transition: opacity 0.5s ease;
+}
+
+.showcase-description {
+    font-size: 1.1rem;
+    color: rgba(232, 227, 213, 0.6);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    max-width: 450px;
+    transition: opacity 0.5s ease;
+}
+
+.featured-showcase__visual {
+    flex: 1.2;
+    position: relative;
+}
+
+.featured-showcase__visual .ipad-frame {
+    background: #111;
+    padding: 2.5%;
+    border-radius: 32px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 0 0 2px rgba(255,255,255,0.05);
+}
+
+.featured-showcase__visual .ipad-screen {
+    position: relative;
+    padding-bottom: 70%;
+    background: #000;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.showcase-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.showcase-img.active {
+    opacity: 1;
+}
+
+.showcase-pagination {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.showcase-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(232, 227, 213, 0.2);
+    transition: all 0.3s ease;
+}
+
+.showcase-dot.active {
+    background: #c084d1;
+    transform: scale(1.3);
+}
+
+.pill-button--purple {
+    background: #c084d1;
+    color: #0a0a0a;
+    border: none;
+    font-weight: 600;
+}
+
+.pill-button--purple:hover {
+    background: #e8e3d5;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+    .featured-showcase {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    .featured-showcase__content {
+        order: 2;
+        text-align: center;
+    }
+    .featured-showcase__visual {
+        order: 1;
+        width: 100%;
+    }
+    .showcase-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
