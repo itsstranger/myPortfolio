@@ -299,87 +299,143 @@
             }
         }
 
-        /* ── Gallery Modal ── */
+        /* ── Redesigned Gallery Modal (Architectural Vibe) ── */
         .gallery-modal {
             position: fixed;
             inset: 0;
-            background: rgba(10, 10, 10, 0.98);
+            background: #1a1a1a;
             z-index: 2000;
             display: none;
             flex-direction: column;
-            padding: 5vh 50px;
-            overflow-y: auto;
-            backdrop-filter: blur(20px);
+            padding: 40px;
+            overflow: hidden;
             opacity: 0;
+            color: #fff;
+            font-family: 'Jost', sans-serif;
         }
         .gallery-modal.is-active { display: flex; }
-        .gallery-header {
+
+        /* Top Bar */
+        .gallery-top-bar {
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 4rem;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            padding-bottom: 2rem;
+            align-items: flex-start;
+        }
+        .gallery-brand-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .gallery-plus {
+            font-size: 2rem;
+            line-height: 1;
+            font-weight: 300;
+            cursor: pointer;
         }
         .gallery-title {
-            font-family: 'Jost', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 600;
-            font-size: clamp(2rem, 5vw, 4rem);
             text-transform: uppercase;
+            line-height: 0.9;
+            margin-top: 20px;
             letter-spacing: -0.04em;
-            color: #e8e3d5;
         }
-        .gallery-title em {
-            font-family: 'Instrument Serif', serif;
-            font-style: italic;
-            font-weight: 400;
-            color: #c084d1;
-            text-transform: none;
-        }
-        .gallery-close {
-            background: none;
-            border: 1px solid rgba(232,227,213,0.2);
-            color: #e8e3d5;
-            padding: 0.8rem 1.5rem;
-            border-radius: 40px;
-            cursor: pointer;
-            font-family: 'Jost', sans-serif;
-            font-size: 0.8rem;
+        .gallery-nav-columns {
+            display: flex;
+            gap: 60px;
+            text-align: right;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: all 0.3s;
+            letter-spacing: 0.05em;
         }
-        .gallery-close:hover {
-            background: #e8e3d5;
-            color: #0a0a0a;
+        .gallery-nav-column {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
         }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+        .gallery-nav-link { 
+            color: rgba(255,255,255,0.6); 
+            text-decoration: none;
+            transition: color 0.3s;
         }
-        .gallery-item {
-            aspect-ratio: 4/5;
-            background: #111;
-            border-radius: 12px;
-            overflow: hidden;
+        .gallery-nav-link:hover { color: #fff; }
+        .gallery-nav-link.active { 
+            color: #fff; 
+            text-decoration: underline; 
+            text-underline-offset: 4px;
+        }
+
+        /* Center Content - Horizontal Scroll */
+        .gallery-main-viewport {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: auto;
+            gap: 30px;
+            padding: 40px 0;
+            scrollbar-width: none; /* Hide scrollbar Firefox */
+        }
+        .gallery-main-viewport::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome */
+        
+        .gallery-large-item {
+            height: 50vh;
+            min-width: 35vh;
+            background: #222;
+            flex-shrink: 0;
             cursor: zoom-in;
-            position: relative;
-            transition: transform 0.4s cubic-bezier(0.23,1,0.32,1);
+            transition: transform 0.5s cubic-bezier(0.23,1,0.32,1);
         }
-        .gallery-item:hover { transform: scale(1.02); }
-        .gallery-item img {
+        .gallery-large-item:hover { transform: scale(1.03); }
+        .gallery-large-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: opacity 0.3s;
         }
 
-        /* ── Lightbox ── */
+        /* Bottom Bar */
+        .gallery-bottom-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: auto;
+        }
+        .gallery-thumbs-strip {
+            display: flex;
+            gap: 10px;
+        }
+        .gallery-mini-thumb {
+            width: 60px;
+            height: 40px;
+            background: #333;
+            border: 1px solid transparent;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: all 0.3s;
+        }
+        .gallery-mini-thumb.active {
+            opacity: 1;
+            border-color: #fff;
+        }
+        .gallery-mini-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .gallery-category-tags {
+            text-align: right;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        /* ── Lightbox (minimal for this vibe) ── */
         .lightbox {
             position: fixed;
             inset: 0;
-            background: #000;
+            background: #111;
             z-index: 3000;
             display: none;
             align-items: center;
@@ -388,51 +444,24 @@
         }
         .lightbox.is-active { display: flex; }
         .lightbox-img {
-            max-width: 90%;
+            max-width: 85%;
             max-height: 85vh;
             object-fit: contain;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
         }
         .lightbox-close {
             position: absolute;
             top: 40px;
             right: 40px;
             color: #fff;
-            font-size: 2.5rem;
+            font-size: 2rem;
             cursor: pointer;
-            opacity: 0.6;
-            transition: opacity 0.3s;
         }
-        .lightbox-close:hover { opacity: 1; }
-        .lightbox-nav {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        .lightbox-btn {
-            background: none;
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #fff;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-        .lightbox-btn:hover { background: #fff; color: #000; }
     </style>
 </head>
 
 <body id="work-page">
 
-    <!-- Loader (same as homepage) -->
+    <!-- Loader -->
     <div class="loader" id="loader" aria-hidden="true">
         <div class="loader-inner">
             <div class="loader-logo">
@@ -446,14 +475,41 @@
     </div>
     <div class="blinds-overlay" id="blinds-overlay"></div>
 
-    <!-- Gallery Modal -->
+    <!-- Gallery Modal (Architectural Redesign) -->
     <div class="gallery-modal" id="gallery-modal">
-        <div class="gallery-header">
-            <h2 class="gallery-title" id="gallery-title-text">FOLDER — <em>name</em></h2>
-            <button class="gallery-close" onclick="closeGallery()">Close Archive</button>
+        <div class="gallery-top-bar">
+            <div class="gallery-brand-section">
+                <div class="gallery-plus" onclick="closeGallery()">+</div>
+                <h2 class="gallery-title" id="gallery-title-text">ARCHITECTURE</h2>
+            </div>
+            <div class="gallery-nav-columns">
+                <div class="gallery-nav-column">
+                    <a href="#" class="gallery-nav-link">Instagram</a>
+                    <a href="#" class="gallery-nav-link">LinkedIn</a>
+                    <a href="#" class="gallery-nav-link">YouTube</a>
+                </div>
+                <div class="gallery-nav-column">
+                    <a href="/" class="gallery-nav-link">Accueil</a>
+                    <a href="work.html" class="gallery-nav-link active">Projets</a>
+                    <a href="about.html" class="gallery-nav-link">À Propos</a>
+                </div>
+            </div>
         </div>
-        <div class="gallery-grid" id="gallery-items-container">
-            <!-- Dynamic items -->
+
+        <div class="gallery-main-viewport" id="gallery-items-container">
+            <!-- Large horizontal items dynamic -->
+        </div>
+
+        <div class="gallery-bottom-bar">
+            <div class="gallery-thumbs-strip" id="gallery-thumbs-container">
+                <!-- Mini thumbnails dynamic -->
+            </div>
+            <div class="gallery-category-tags" id="gallery-tags-container">
+                <div>ARCHI</div>
+                <div>BRAND</div>
+                <div>EDITORIAL</div>
+                <div>JOURNAL</div>
+            </div>
         </div>
     </div>
 
@@ -461,11 +517,6 @@
     <div class="lightbox" id="lightbox">
         <div class="lightbox-close" onclick="closeLightbox()">×</div>
         <img src="" alt="" class="lightbox-img" id="lightbox-main-img">
-        <div class="lightbox-nav">
-            <button class="lightbox-btn" onclick="prevImage()">←</button>
-            <span id="lightbox-counter" style="color:#fff; font-family:'Jost'; font-size:0.9rem; opacity:0.5;">1 / 10</span>
-            <button class="lightbox-btn" onclick="nextImage()">→</button>
-        </div>
     </div>
 
     <!-- Header (exact same structure as homepage) -->
@@ -741,17 +792,31 @@
             if (!folder) return;
 
             currentGalleryImages = folder.images;
-            document.getElementById('gallery-title-text').innerHTML = folder.title;
+            document.getElementById('gallery-title-text').innerHTML = folder.title.replace(/<[^>]*>/g, ''); // Strip em tags for this clean look
             
-            const container = document.getElementById('gallery-items-container');
-            container.innerHTML = '';
+            const mainContainer = document.getElementById('gallery-items-container');
+            const thumbContainer = document.getElementById('gallery-thumbs-container');
+            mainContainer.innerHTML = '';
+            thumbContainer.innerHTML = '';
             
             folder.images.forEach((img, i) => {
-                const item = document.createElement('div');
-                item.className = 'gallery-item';
-                item.innerHTML = `<img src="${img}" alt="" loading="lazy">`;
-                item.onclick = () => openLightbox(i);
-                container.appendChild(item);
+                // Large item
+                const largeItem = document.createElement('div');
+                largeItem.className = 'gallery-large-item';
+                largeItem.innerHTML = `<img src="${img}" alt="" loading="lazy">`;
+                largeItem.onclick = () => openLightbox(i);
+                mainContainer.appendChild(largeItem);
+
+                // Mini thumb
+                const miniThumb = document.createElement('div');
+                miniThumb.className = `gallery-mini-thumb ${i === 0 ? 'active' : ''}`;
+                miniThumb.innerHTML = `<img src="${img}" alt="">`;
+                miniThumb.onclick = () => {
+                    document.querySelectorAll('.gallery-mini-thumb').forEach(t => t.classList.remove('active'));
+                    miniThumb.classList.add('active');
+                    largeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                };
+                thumbContainer.appendChild(miniThumb);
             });
 
             const modal = document.getElementById('gallery-modal');
@@ -770,32 +835,15 @@
 
         function openLightbox(index) {
             currentLightboxIndex = index;
-            updateLightbox();
+            document.getElementById('lightbox-main-img').src = currentGalleryImages[index];
             const lb = document.getElementById('lightbox');
             lb.classList.add('is-active');
             gsap.to(lb, { opacity: 1, duration: 0.5 });
         }
 
-        function updateLightbox() {
-            const img = document.getElementById('lightbox-main-img');
-            const counter = document.getElementById('lightbox-counter');
-            img.src = currentGalleryImages[currentLightboxIndex];
-            counter.innerText = `${currentLightboxIndex + 1} / ${currentGalleryImages.length}`;
-        }
-
         function closeLightbox() {
             const lb = document.getElementById('lightbox');
             gsap.to(lb, { opacity: 0, duration: 0.3, onComplete: () => lb.classList.remove('is-active') });
-        }
-
-        function nextImage() {
-            currentLightboxIndex = (currentLightboxIndex + 1) % currentGalleryImages.length;
-            updateLightbox();
-        }
-
-        function prevImage() {
-            currentLightboxIndex = (currentLightboxIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
-            updateLightbox();
         }
 
         // Close on ESC
