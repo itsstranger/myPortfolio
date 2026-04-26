@@ -139,101 +139,67 @@
         <div class="section-content">
           <div class="ipad-showcase"
             style="display: flex; flex-direction: column; width: 100%; align-items: center; margin-top: 4rem;">
-          <div class="large-tablet-preview">
-            <div class="ipad-frame">
-              <div class="ipad-screen">
-                <!-- Mini version of the work-slider -->
-                <div class="mini-slider">
-                  <div class="mini-slider__media-side">
-                    <img id="mini-img-1" src="/assets/flight99_scroll.webp" class="mini-img active">
-                    <img id="mini-img-2" src="/assets/dhtimetable_scroll.webp" class="mini-img">
-                  </div>
-                  <div class="mini-slider__text-side">
-                    <div class="mini-slider__counter">01 / 02</div>
-                    <h3 id="mini-title" class="mini-title">Flight99</h3>
-                    <p id="mini-desc" class="mini-desc">Full-service travel platform balancing trust and speed.</p>
-                  </div>
+            <div class="ipad-frame-container" style="position: relative; width: 100%; max-width: 900px;">
+
+
+              <div class="ipad-frame"
+                style="background: #0f172a; padding: 2%; border-radius: 32px; box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 0 4px #333; position: relative;">
+                <div class="ipad-screen"
+                  style="position: relative; padding-bottom: 70%; background: #000; border-radius: 16px; overflow: hidden; pointer-events: none;">
+                  <!-- Videos -->
+                  <img id="showcase-img-1" src="/assets/flight99_scroll.webp"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity 1s ease;">
+                  <img id="showcase-img-2" src="/assets/dhtimetable_scroll.webp"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease;">
                 </div>
               </div>
-              
-              <!-- Floating 'View Work' Diamond -->
-              <a href="work.html" class="work-view-diamond">
-                <svg viewBox="0 0 45 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M43.6466 13.3979C32.8541 13.3979 25.712 9.10371 22.228 1.00019" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M43.6466 13.398C32.8541 13.3979 25.712 17.6922 22.228 25.7957" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M42.8208 13.398L1 13.3979" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-                <span>View work</span>
-              </a>
-            </div>
 
-            <div class="showcase-pagination">
-              <span class="showcase-dot active" data-index="0"></span>
-              <span class="showcase-dot" data-index="1"></span>
             </div>
           </div>
 
           <script>
             (function () {
-              const titleEl = document.getElementById('mini-title');
-              const descEl = document.getElementById('mini-desc');
-              const img1 = document.getElementById('mini-img-1');
-              const img2 = document.getElementById('mini-img-2');
-              const counterEl = document.querySelector('.mini-slider__counter');
-              const dots = document.querySelectorAll('.showcase-dot');
+              const img1 = document.getElementById('showcase-img-1');
+              const img2 = document.getElementById('showcase-img-2');
 
-              const projects = [
-                { 
-                  title: 'Flight99', 
-                  desc: 'Full-service travel platform balancing trust and speed.',
-                  counter: '01 / 02'
-                },
-                { 
-                  title: 'DH Timetable', 
-                  desc: 'Smart timetable app with home-screen widgets.',
-                  counter: '02 / 02'
-                }
-              ];
-
-              let current = 0;
-
-              function updateShowcase(index) {
-                current = index;
-                
-                // Update text with quick fade
-                titleEl.style.opacity = '0';
-                descEl.style.opacity = '0';
-                
-                setTimeout(() => {
-                  titleEl.textContent = projects[current].title;
-                  descEl.textContent = projects[current].desc;
-                  counterEl.textContent = projects[current].counter;
-                  
-                  titleEl.style.opacity = '1';
-                  descEl.style.opacity = '1';
-                }, 300);
-
-                // Toggle images
-                if (current === 0) {
-                  img1.classList.add('active');
-                  img2.classList.remove('active');
-                } else {
-                  img1.classList.remove('active');
-                  img2.classList.add('active');
-                }
-
-                // Update dots
-                dots.forEach((dot, i) => {
-                  dot.classList.toggle('active', i === current);
-                });
-              }
+              let currentProject = 1;
 
               setInterval(() => {
-                let next = (current + 1) % projects.length;
-                updateShowcase(next);
-              }, 4500);
+                setTimeout(() => {
+                  currentProject = currentProject === 1 ? 2 : 1;
+                  if (currentProject === 1) {
+                    img1.style.opacity = '1';
+                    img2.style.opacity = '0';
+                  } else {
+                    img1.style.opacity = '0';
+                    img2.style.opacity = '1';
+                  }
+                }, 500);
+              }, 4000);
             })();
           </script>
+        </div>
+        <!-- <h2>Work</h2>
+            <div class="section-intro">
+                <div>
+                    <p>I design and build custom digital experiences that blend strategy, visual design, and motion. </p>   
+                    <p>Every project is shaped around the client — not a template — with a focus on clarity, character, and craft.</p>
+                </div>
+            </div>
+             -->
+        <div class="work__cursor" aria-hidden="true">
+          <div class="work__cursor-circle">
+
+            <svg class="work__cursor-arrow" viewBox="0 0 45 27" aria-hidden="true" focusable="false">
+              <path d="M43.6466 13.3979C32.8541 13.3979 25.712 9.10371 22.228 1.00019" stroke="#3A4A16" stroke-width="2"
+                stroke-linecap="round" />
+              <path d="M43.6466 13.398C32.8541 13.3979 25.712 17.6922 22.228 25.7957" stroke="#3A4A16" stroke-width="2"
+                stroke-linecap="round" />
+              <path d="M42.8208 13.398L1 13.3979" stroke="#3A4A16" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <div class="work__cursor-label">Flight99</div>
+          </div>
+
         </div>
       </section>
 
