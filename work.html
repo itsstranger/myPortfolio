@@ -298,6 +298,135 @@
                 padding-right: 1.5rem;
             }
         }
+
+        /* ── Gallery Modal ── */
+        .gallery-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 10, 10, 0.98);
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            padding: 5vh 50px;
+            overflow-y: auto;
+            backdrop-filter: blur(20px);
+            opacity: 0;
+        }
+        .gallery-modal.is-active { display: flex; }
+        .gallery-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 4rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding-bottom: 2rem;
+        }
+        .gallery-title {
+            font-family: 'Jost', sans-serif;
+            font-weight: 600;
+            font-size: clamp(2rem, 5vw, 4rem);
+            text-transform: uppercase;
+            letter-spacing: -0.04em;
+            color: #e8e3d5;
+        }
+        .gallery-title em {
+            font-family: 'Instrument Serif', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: #c084d1;
+            text-transform: none;
+        }
+        .gallery-close {
+            background: none;
+            border: 1px solid rgba(232,227,213,0.2);
+            color: #e8e3d5;
+            padding: 0.8rem 1.5rem;
+            border-radius: 40px;
+            cursor: pointer;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s;
+        }
+        .gallery-close:hover {
+            background: #e8e3d5;
+            color: #0a0a0a;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .gallery-item {
+            aspect-ratio: 4/5;
+            background: #111;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: zoom-in;
+            position: relative;
+            transition: transform 0.4s cubic-bezier(0.23,1,0.32,1);
+        }
+        .gallery-item:hover { transform: scale(1.02); }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s;
+        }
+
+        /* ── Lightbox ── */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+        }
+        .lightbox.is-active { display: flex; }
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 85vh;
+            object-fit: contain;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            color: #fff;
+            font-size: 2.5rem;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+        .lightbox-close:hover { opacity: 1; }
+        .lightbox-nav {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .lightbox-btn {
+            background: none;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .lightbox-btn:hover { background: #fff; color: #000; }
     </style>
 </head>
 
@@ -316,6 +445,28 @@
         </div>
     </div>
     <div class="blinds-overlay" id="blinds-overlay"></div>
+
+    <!-- Gallery Modal -->
+    <div class="gallery-modal" id="gallery-modal">
+        <div class="gallery-header">
+            <h2 class="gallery-title" id="gallery-title-text">FOLDER — <em>name</em></h2>
+            <button class="gallery-close" onclick="closeGallery()">Close Archive</button>
+        </div>
+        <div class="gallery-grid" id="gallery-items-container">
+            <!-- Dynamic items -->
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-close" onclick="closeLightbox()">×</div>
+        <img src="" alt="" class="lightbox-img" id="lightbox-main-img">
+        <div class="lightbox-nav">
+            <button class="lightbox-btn" onclick="prevImage()">←</button>
+            <span id="lightbox-counter" style="color:#fff; font-family:'Jost'; font-size:0.9rem; opacity:0.5;">1 / 10</span>
+            <button class="lightbox-btn" onclick="nextImage()">→</button>
+        </div>
+    </div>
 
     <!-- Header (exact same structure as homepage) -->
     <header class="header">
@@ -429,7 +580,7 @@
 
             <div class="folders-grid">
                 <!-- Web & Interaction -->
-                <div class="folder" onclick="window.location='#'">
+                <div class="folder" onclick="openGallery('web')">
                     <div class="folder__tab">
                         <div class="folder__dot" style="background:#ff3c00"></div>
                         <div class="folder__dot" style="background:#ffb300"></div>
@@ -447,7 +598,7 @@
                 </div>
 
                 <!-- Brand & Identity -->
-                <div class="folder">
+                <div class="folder" onclick="openGallery('brand')">
                     <div class="folder__tab">
                         <div class="folder__dot" style="background:#c084d1"></div>
                         <div class="folder__dot" style="background:#9c27b0"></div>
@@ -465,7 +616,7 @@
                 </div>
 
                 <!-- Editorial & Print -->
-                <div class="folder">
+                <div class="folder" onclick="openGallery('editorial')">
                     <div class="folder__tab">
                         <div class="folder__dot" style="background:#ffb300"></div>
                         <div class="folder__dot" style="background:#ff6f00"></div>
@@ -483,7 +634,7 @@
                 </div>
 
                 <!-- The Lab -->
-                <div class="folder">
+                <div class="folder" onclick="openGallery('lab')">
                     <div class="folder__tab">
                         <div class="folder__dot" style="background:#c084d1"></div>
                         <div class="folder__dot" style="background:#ff3c00"></div>
@@ -533,10 +684,128 @@
 
     </main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-    <script src="/js/main.js" defer></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="/js/main.js"></script>
+
+    <script>
+        const ARCHIVE_DATA = {
+            web: {
+                title: 'WEB — <em>interaction</em>',
+                images: ['/assets/flight99_scroll.webp', '/assets/dhtimetable_scroll.webp']
+            },
+            brand: {
+                title: 'BRAND — <em>identity</em>',
+                images: [
+                    '/seed/MA cafe branding/green.png',
+                    '/seed/flight 99 branding/flight99 logo.png',
+                    '/seed/flight 99 branding/1st poster.png',
+                    '/seed/fulus branding/fulus post 1.png',
+                    '/seed/fulus post 2.png',
+                    '/seed/fulus profile en.png',
+                    '/seed/fulus profile mlm.png',
+                    '/seed/logo reveal-3.png',
+                    '/seed/logos -general/wafd.png'
+                ]
+            },
+            editorial: {
+                title: 'EDITORIAL — <em>print</em>',
+                images: [
+                    '/seed/event posters/final.png', '/seed/event posters/ashi.png', '/seed/event posters/mamburam.png',
+                    '/seed/event posters/ashi 9.png', '/seed/event posters/ashi 2.png', '/seed/event posters/ashi 3.png',
+                    '/seed/event posters/ashi 4 300dpi.png', '/seed/event posters/ashi 5 copy.png', '/seed/event posters/ashi 7.png',
+                    '/seed/event posters/ashi 8.png', '/seed/event posters/Untitled-2.png', '/seed/event posters/afnan.png',
+                    '/seed/event posters/dep zakath.png', '/seed/event posters/dialouge.png', '/seed/event posters/eid class.png',
+                    '/seed/event posters/extras ksd.png', '/seed/event posters/finance zakath.png', '/seed/event posters/fulus articles.png',
+                    '/seed/event posters/ksd 2.png', '/seed/event posters/laka sumthu.png', '/seed/event posters/nadi 3.png',
+                    '/seed/event posters/nadi.png', '/seed/event posters/nooe eird.png', '/seed/event posters/sq.png',
+                    '/seed/event posters/sr 1.png', '/seed/event posters/sr 2.png', '/seed/event posters/zakath survey.png'
+                ]
+            },
+            lab: {
+                title: 'THE LAB — <em>playground</em>',
+                images: [
+                    '/seed/lab/1.png', '/seed/lab/Artboard 1.png', '/seed/lab/jumua mubarak.png',
+                    '/seed/lab/mashaallah.png', '/seed/lab/muhammad s.png', '/seed/lab/nabi dinam.png',
+                    '/seed/lab/srt 2.png', '/seed/lab/jumua mubaak.png'
+                ]
+            }
+        };
+
+        let currentGalleryImages = [];
+        let currentLightboxIndex = 0;
+
+        function openGallery(folderId) {
+            const folder = ARCHIVE_DATA[folderId];
+            if (!folder) return;
+
+            currentGalleryImages = folder.images;
+            document.getElementById('gallery-title-text').innerHTML = folder.title;
+            
+            const container = document.getElementById('gallery-items-container');
+            container.innerHTML = '';
+            
+            folder.images.forEach((img, i) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.innerHTML = `<img src="${img}" alt="" loading="lazy">`;
+                item.onclick = () => openLightbox(i);
+                container.appendChild(item);
+            });
+
+            const modal = document.getElementById('gallery-modal');
+            modal.classList.add('is-active');
+            gsap.to(modal, { opacity: 1, duration: 0.6, ease: 'power2.out' });
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGallery() {
+            const modal = document.getElementById('gallery-modal');
+            gsap.to(modal, { opacity: 0, duration: 0.4, ease: 'power2.in', onComplete: () => {
+                modal.classList.remove('is-active');
+                document.body.style.overflow = '';
+            }});
+        }
+
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            updateLightbox();
+            const lb = document.getElementById('lightbox');
+            lb.classList.add('is-active');
+            gsap.to(lb, { opacity: 1, duration: 0.5 });
+        }
+
+        function updateLightbox() {
+            const img = document.getElementById('lightbox-main-img');
+            const counter = document.getElementById('lightbox-counter');
+            img.src = currentGalleryImages[currentLightboxIndex];
+            counter.innerText = `${currentLightboxIndex + 1} / ${currentGalleryImages.length}`;
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById('lightbox');
+            gsap.to(lb, { opacity: 0, duration: 0.3, onComplete: () => lb.classList.remove('is-active') });
+        }
+
+        function nextImage() {
+            currentLightboxIndex = (currentLightboxIndex + 1) % currentGalleryImages.length;
+            updateLightbox();
+        }
+
+        function prevImage() {
+            currentLightboxIndex = (currentLightboxIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
+            updateLightbox();
+        }
+
+        // Close on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (document.getElementById('lightbox').classList.contains('is-active')) closeLightbox();
+                else if (document.getElementById('gallery-modal').classList.contains('is-active')) closeGallery();
+            }
+        });
+    </script>
 </body>
 
 </html>
