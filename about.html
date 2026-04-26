@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>About | Ammar Ali — Digital Designer</title>
+    <meta name="description" content="About Ammar Ali — digital designer from Kerala, India, crafting brands that want to be unique, not conventional.">
+    <link rel="canonical" href="about.html">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/index.css">
+    <link rel="prefetch" href="index.html">
+    <link rel="prefetch" href="work.html">
+    <script>
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        window.scrollTo(0, 0);
+    </script>
+    <style>
+        /* ══════════════════════════════════════════
+           DARK THEME OVERRIDES for about-page
+           ══════════════════════════════════════════ */
+
+        #about-page,
+        #about-page .about-page {
+            background: #0a0a0a !important;
+            color: #e8e3d5 !important;
+        }
+
+        /* Nav */
+        #about-page .nav-link { color: #e8e3d5 !important; }
+        #about-page .nav-link--active::after { background-color: #e8e3d5 !important; }
+        #about-page .header-tag,
+        #about-page .header-location { color: rgba(232,227,213,0.6) !important; }
+
+        /* ── Hero heading ── */
+        .about-hero__heading {
+            font-family: 'Jost', sans-serif !important;
+            font-weight: 600 !important;
+            font-size: clamp(2.5rem, 6vw, 7rem) !important;
+            text-transform: uppercase !important;
+            letter-spacing: -0.06em !important;
+            line-height: 0.85 !important;
+            color: #e8e3d5 !important;
+        }
+        .about-hero__heading em {
+            font-family: 'Instrument Serif', Georgia, serif !important;
+            font-style: italic !important;
+            font-weight: 400 !important;
+            font-size: 1.15em !important;
+            color: #c084d1 !important;
+            text-transform: none !important;
+            letter-spacing: 0 !important;
+            line-height: 0 !important;
+        }
+
+        /* ── Intro section: image wrapper replaced with abstract art ── */
+        .about-intro__image-wrapper {
+            background: linear-gradient(135deg, #1a0a20 0%, #0a0a1a 60%, #1a0500 100%) !important;
+            border-radius: 24px !important;
+            border: 1px solid rgba(192,132,209,0.15) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            overflow: hidden !important;
+            position: relative !important;
+        }
+        .about-intro__image { display: none !important; }
+        .about-intro__image-wrapper::before {
+            content: 'A.';
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-style: italic;
+            font-size: clamp(5rem, 12vw, 10rem);
+            color: rgba(192,132,209,0.25);
+            letter-spacing: -0.04em;
+        }
+        .about-intro__image-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 60% 40%, rgba(255,60,0,0.08) 0%, transparent 60%),
+                        radial-gradient(ellipse at 30% 70%, rgba(192,132,209,0.1) 0%, transparent 50%);
+        }
+
+        /* Intro text */
+        .about-intro__title {
+            font-family: 'Jost', sans-serif !important;
+            font-weight: 600 !important;
+            color: #e8e3d5 !important;
+            font-size: clamp(1.5rem, 2.5vw, 2.5rem) !important;
+            letter-spacing: -0.03em !important;
+            text-transform: uppercase !important;
+        }
+        .about-intro__text p { color: rgba(232,227,213,0.65) !important; }
+
+        /* Stats */
+        .about-intro__stat-number {
+            font-family: 'Jost', sans-serif !important;
+            font-weight: 600 !important;
+            color: #ff3c00 !important;
+        }
+        .about-intro__stat-label { color: rgba(232,227,213,0.55) !important; }
+
+        /* Experience section */
+        .about-experience__heading,
+        .about-interests__heading {
+            font-family: 'Jost', sans-serif !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+            letter-spacing: -0.04em !important;
+            color: #e8e3d5 !important;
+        }
+        .about-experience__heading em,
+        .about-interests__heading em {
+            font-family: 'Instrument Serif', Georgia, serif !important;
+            font-style: italic !important;
+            font-weight: 400 !important;
+            font-size: 1.1em !important;
+            color: #c084d1 !important;
+            text-transform: none !important;
+            letter-spacing: 0 !important;
+        }
+        .about-experience__role { color: #e8e3d5 !important; }
+        .about-experience__period { color: rgba(232,227,213,0.45) !important; }
+        .about-experience__item { border-bottom-color: rgba(255,255,255,0.06) !important; }
+
+        /* Interests */
+        .about-interests__content p { color: rgba(232,227,213,0.65) !important; }
+        .about-interests__content p::before { color: #ff3c00 !important; }
+
+        /* Contact & footer */
+        #about-page .section { background: #0a0a0a; }
+        #about-page .footer {
+            background: #0a0a0a;
+            border-top-color: rgba(232,227,213,0.08) !important;
+        }
+    </style>
+</head>
+<body id="about-page">
+
+    <a href="about.html#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Loader -->
+    <div class="loader" id="loader" aria-hidden="true">
+        <div class="loader-inner">
+            <div class="loader-logo">
+                <img src="assets/logo-ammar.svg" alt="ammar.design" class="loader-logo-outline">
+                <div class="loader-logo-fill" aria-hidden="true">
+                    <span class="loader-logo-fill-bar"></span>
+                </div>
+            </div>
+            <div class="loader-text">Digital Designer & Vibe Coder</div>
+        </div>
+    </div>
+    <div class="blinds-overlay" id="blinds-overlay"></div>
+
+    <!-- Header — exact same structure as homepage -->
+    <header class="header">
+        <div class="header-container">
+            <div class="brand">
+                <a href="/" class="brand-link">
+                    <img src="assets/logo-ammar.svg" alt="ammar.design" class="brand-logo">
+                </a>
+            </div>
+            <nav class="navigation">
+                <a href="/" class="nav-link">Home</a>
+                <a href="work.html" class="nav-link">Work</a>
+                <a href="about.html" class="nav-link nav-link--active">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" class="about-page">
+
+        <!-- Header center tags -->
+        <div class="header-center">
+            <span class="header-tag">Digital Designer</span>
+            <span class="header-location">Based in Kerala, India</span>
+        </div>
+
+        <!-- ── Hero ── -->
+        <section class="about-hero">
+            <h1 class="about-hero__heading">THE STORY<br>BEHIND <em>ammar.</em></h1>
+        </section>
+
+        <!-- ── Intro ── -->
+        <section class="about-intro">
+            <div class="about-intro__content">
+
+                <!-- Abstract identity block instead of photo -->
+                <div class="about-intro__image-wrapper">
+                    <!-- Abstract art rendered via CSS ::before / ::after -->
+                </div>
+
+                <div class="about-intro__text">
+                    <h2 class="about-intro__title">Hey, I'm Ammar</h2>
+                    <p>I'm a digital designer and vibe coder from <strong style="color:#e8e3d5;">Kerala, India</strong> — building living, breathing digital experiences for brands that want to be <em style="font-family:'Instrument Serif',serif; font-style:italic; color:#c084d1;">unique, not conventional</em>.</p>
+                    <p>My work sits at the intersection of brand strategy, visual design, and front-end craft. Every project starts with deep understanding and ends with something that feels <strong style="color:#e8e3d5;">specific, intentional, and alive</strong>.</p>
+                    <p>Independent by conviction, detail-obsessed by nature.</p>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="about-intro__stats">
+                <div class="about-intro__stat">
+                    <div class="about-intro__stat-number">3+</div>
+                    <div class="about-intro__stat-label">years designing</div>
+                </div>
+                <div class="about-intro__stat">
+                    <div class="about-intro__stat-number">10+</div>
+                    <div class="about-intro__stat-label">projects shipped</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Experience ── -->
+        <section class="about-experience">
+            <h2 class="about-experience__heading">Work <em>experience</em></h2>
+            <div class="about-experience__grid">
+                <div class="about-experience__column">
+                    <div class="about-experience__item">
+                        <div class="about-experience__role">Freelance Digital Designer</div>
+                        <div class="about-experience__period">2022 – Present | Kerala, India</div>
+                    </div>
+                    <div class="about-experience__item">
+                        <div class="about-experience__role">UI/UX Designer | Flight99 Travel Enterprises</div>
+                        <div class="about-experience__period">2023 – 2024 | Remote</div>
+                    </div>
+                    <div class="about-experience__item">
+                        <div class="about-experience__role">App Designer | DHIU Timetable</div>
+                        <div class="about-experience__period">2024 – Present | Kerala, India</div>
+                    </div>
+                </div>
+                <div class="about-experience__column">
+                    <div class="about-experience__item">
+                        <div class="about-experience__role">Brand & Visual Design (Freelance Projects)</div>
+                        <div class="about-experience__period">2022 – Present | Various</div>
+                    </div>
+                    <div class="about-experience__item">
+                        <div class="about-experience__role">Student — B.Sc. Computer Science</div>
+                        <div class="about-experience__period">2022 – 2025 | DHIU, Kerala</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Interests ── -->
+        <section class="about-interests">
+            <h2 class="about-interests__heading">Personal <em>interests</em></h2>
+            <div class="about-interests__content">
+                <p>Typography, poster design & visual identity</p>
+                <p>Calligraphy, 3D type & motion experiments</p>
+                <p>AI-augmented creative workflows</p>
+                <p>Football, chess & strategy games</p>
+                <p>Arabic calligraphy & Islamic geometric patterns</p>
+                <p>Kerala, mountains & good coffee</p>
+            </div>
+        </section>
+
+        <!-- ── Contact ── -->
+        <section class="section" id="contact">
+            <div class="section-content">
+                <h2>Let's work <em>together</em></h2>
+                <p>I'm always looking for new projects and collaborations. If you have a project in mind, or just want to say hello, please get in touch.</p>
+                <div class="contact__info">
+                    <p>Ammar Ali</p>
+                    <p><a href="mailto:itsmeammarali@gmail.com" style="text-decoration:none">itsmeammarali@gmail.com</a></p>
+                </div>
+                <div class="contact__links">
+                    <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div style="display:flex;justify-content:space-between;align-items:center;width:100%;padding:0 2rem;box-sizing:border-box;">
+                <p style="margin:0;">© 2026 Ammar Ali. Digital Designer & Vibe Coder.</p>
+                <p style="margin:0;font-size:0.85em;opacity:0.7;">inspired by <a href="https://marimba.design" target="_blank" rel="noopener noreferrer" style="color:#ff3c00;text-decoration:none;border-bottom:1px dotted #c084d1;">marimba.design</a></p>
+            </div>
+        </footer>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="/js/main.js" defer></script>
+
+</body>
+</html>

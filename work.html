@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Work | Ammar Ali — Digital Designer</title>
+    <meta name="description"
+        content="Selected works by Ammar Ali — digital designer crafting living, breathing experiences for brands that want to be unique, not conventional.">
+    <link rel="canonical" href="work.html">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=Jost:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/src/index.css">
+    <link rel="prefetch" href="index.html">
+    <link rel="prefetch" href="about.html">
+    <script>
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        window.scrollTo(0, 0);
+    </script>
+    <style>
+        /* ══════════════════════════════════════════════
+           DARK THEME OVERRIDES — match homepage palette
+           ══════════════════════════════════════════════ */
+
+        /* Force dark bg & text throughout */
+        #work-page,
+        #work-page .work-page {
+            background: #0a0a0a !important;
+            color: #e8e3d5 !important;
+        }
+
+        /* Nav links: cream on dark */
+        #work-page .nav-link {
+            color: #e8e3d5 !important;
+        }
+
+        #work-page .nav-link--active::after {
+            background-color: #e8e3d5 !important;
+        }
+
+        #work-page .header-tag,
+        #work-page .header-location {
+            color: rgba(232, 227, 213, 0.6) !important;
+        }
+
+        /* Work intro heading — keep layout, swap colors */
+        .work-intro__heading {
+            font-family: 'Jost', sans-serif !important;
+            font-weight: 600 !important;
+            font-size: 4.5vw !important;
+            text-transform: uppercase !important;
+            letter-spacing: -0.04em !important;
+            line-height: 1 !important;
+            color: #e8e3d5 !important;
+            text-align: center !important;
+        }
+
+        .work-intro__heading em {
+            font-family: 'Instrument Serif', Georgia, serif !important;
+            font-style: italic !important;
+            font-weight: 400 !important;
+            font-size: 1.15em !important;
+            color: #c084d1 !important;
+            text-transform: none !important;
+            letter-spacing: -0.02em !important;
+        }
+
+        .work-intro__description {
+            color: rgba(232, 227, 213, 0.55) !important;
+            text-align: center !important;
+            font-size: 0.95rem !important;
+        }
+
+        /* Keep container alignment centered, swap gradient to dark purple glow */
+        .work-intro__container {
+            background-image: radial-gradient(ellipse at center, rgba(192, 132, 209, 0.12) 0%, transparent 70%) !important;
+            align-items: center !important;
+        }
+
+        /* Slider laptop panel */
+        .work-slider__laptop {
+            background-color: #111 !important;
+        }
+
+        /* Slider right panel — title, counter, button */
+        .work-slider__title {
+            font-family: 'Jost', sans-serif !important;
+            font-weight: 600 !important;
+            font-size: clamp(2rem, 3.5vw, 4rem) !important;
+            letter-spacing: -0.04em !important;
+            text-transform: uppercase !important;
+            color: #e8e3d5 !important;
+        }
+
+        .work-slider__counter-fixed,
+        .work-slider__counter-current,
+        .work-slider__counter-separator,
+        .work-slider__counter-total {
+            color: rgba(232, 227, 213, 0.6) !important;
+        }
+
+        .work-slider__description {
+            color: rgba(232, 227, 213, 0.55) !important;
+        }
+
+        .work-slider__button {
+            border-color: rgba(232, 227, 213, 0.25) !important;
+            color: #e8e3d5 !important;
+        }
+
+        .work-slider__button:hover {
+            background-color: #c084d1 !important;
+            border-color: #c084d1 !important;
+            color: #0a0a0a !important;
+        }
+
+        /* Pagination dots */
+        .work-slider__dot {
+            background-color: rgba(232, 227, 213, 0.2) !important;
+        }
+
+        .work-slider__dot.is-active {
+            background-color: rgba(232, 227, 213, 0.1) !important;
+        }
+
+        .work-slider__dot::after {
+            background-color: #c084d1 !important;
+        }
+
+        /* Contact & footer sections */
+        #work-page .section {
+            background: #0a0a0a;
+        }
+
+        #work-page .footer {
+            background: #0a0a0a;
+            border-top-color: rgba(232, 227, 213, 0.08) !important;
+        }
+
+        /* ── Section label ── */
+        .sec-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #ff3c00;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .sec-label::after {
+            content: '';
+            display: block;
+            height: 1px;
+            width: 40px;
+            background: #ff3c00;
+            opacity: 0.4;
+        }
+
+        /* ── Folders section ── */
+        .work-folders {
+            padding: 5rem 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+            margin-top: -50vh;
+            position: relative;
+            z-index: 10;
+            background: #0a0a0a;
+        }
+
+        .work-folders h2 {
+            font-family: 'Jost', sans-serif;
+            font-weight: 600;
+            font-size: clamp(2rem, 5vw, 4.5rem);
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            line-height: 0.85;
+            color: #e8e3d5;
+            margin-bottom: 3rem;
+        }
+
+        .work-folders h2 em {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-style: italic;
+            font-size: 1.2em;
+            font-weight: 400;
+            color: #c084d1;
+            text-transform: none;
+            letter-spacing: 0;
+            line-height: 0;
+        }
+
+        .folders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .folder {
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 14px;
+            overflow: hidden;
+            background: #0f0f0f;
+            cursor: pointer;
+            transition: border-color 0.3s, transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .folder:hover {
+            border-color: rgba(192, 132, 209, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .folder__tab {
+            height: 26px;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            gap: 6px;
+            background: #161616;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .folder__dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .folder__tab-label {
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(232, 227, 213, 0.4);
+            margin-left: auto;
+        }
+
+        .folder__previews {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            background: rgba(255, 255, 255, 0.07);
+            height: 150px;
+        }
+
+        .folder__thumb {
+            background: #111;
+            overflow: hidden;
+        }
+
+        .folder__thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .folder__thumb.empty {
+            background: linear-gradient(135deg, #1a0a1a, #0d0d0d);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.58rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(192, 132, 209, 0.15);
+        }
+
+        .folder__meta {
+            padding: 1rem 1.2rem 1.2rem;
+        }
+
+        .folder__name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #e8e3d5;
+            text-transform: uppercase;
+        }
+
+        .folder__count {
+            font-size: 0.72rem;
+            font-weight: 300;
+            color: rgba(232, 227, 213, 0.45);
+            margin-top: 0.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .work-folders {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body id="work-page">
+
+    <!-- Loader (same as homepage) -->
+    <div class="loader" id="loader" aria-hidden="true">
+        <div class="loader-inner">
+            <div class="loader-logo">
+                <img src="assets/logo-ammar.svg" alt="ammar.design" class="loader-logo-outline">
+                <div class="loader-logo-fill" aria-hidden="true">
+                    <span class="loader-logo-fill-bar"></span>
+                </div>
+            </div>
+            <div class="loader-text">Digital Designer & Vibe Coder</div>
+        </div>
+    </div>
+    <div class="blinds-overlay" id="blinds-overlay"></div>
+
+    <!-- Header (exact same structure as homepage) -->
+    <header class="header">
+        <div class="header-container">
+            <div class="brand">
+                <a href="/" class="brand-link">
+                    <img src="assets/logo-ammar.svg" alt="ammar.design" class="brand-logo">
+                </a>
+            </div>
+            <nav class="navigation">
+                <a href="/" class="nav-link">Home</a>
+                <a href="work.html" class="nav-link nav-link--active">Work</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" class="work-page">
+
+        <!-- Header center tags (same position as ref) -->
+        <div class="header-center">
+            <span class="header-tag">Digital Designer</span>
+            <span class="header-location">Based in Kerala, India</span>
+        </div>
+
+        <!-- ═══ 01 — FEATURED SLIDER (mirrors ref structure exactly) ═══ -->
+        <div class="work-hero-wrapper">
+
+            <!-- Intro -->
+            <section class="work-intro">
+                <div class="work-intro__container">
+                    <h1 class="work-intro__heading">Selected <em
+                            style="font-family:'Instrument Serif',serif; font-style:italic; font-weight:400; color:#c084d1;">work</em>
+                    </h1>
+                    <p class="work-intro__description">Every project is shaped around the client — not a template — with
+                        a focus on clarity, character, and craft.</p>
+                </div>
+            </section>
+
+            <!-- Pinned Slider -->
+            <section class="work-slider">
+
+                <!-- Laptop mockup area (left) -->
+                <div class="work-slider__laptop">
+                    <div class="work-slider__media-container">
+                        <!-- Project 1: Flight99 -->
+                        <img class="work-slider__media" data-project="1" src="/assets/flight99_scroll.webp"
+                            alt="Flight99 preview" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+
+                        <!-- Project 2: DH Timetable -->
+                        <img class="work-slider__media" data-project="2" src="/assets/dhtimetable_scroll.webp"
+                            alt="DH Timetable preview"
+                            style="width:100%;height:100%;object-fit:cover;object-position:top;">
+                    </div>
+
+                    <!-- Pagination dots -->
+                    <div class="work-slider__pagination">
+                        <div class="work-slider__dot" data-index="0"></div>
+                        <div class="work-slider__dot" data-index="1"></div>
+                    </div>
+                </div>
+
+                <!-- Right panel: counter + title + description -->
+                <div class="work-slider__content-wrapper">
+                    <!-- Counter -->
+                    <div class="work-slider__counter-fixed">
+                        <span class="work-slider__counter-current-wrapper">
+                            <span class="work-slider__counter-current" data-project="1">01</span>
+                            <span class="work-slider__counter-current" data-project="2">02</span>
+                        </span>
+                        <span class="work-slider__counter-separator">/</span>
+                        <span class="work-slider__counter-total">02</span>
+                    </div>
+
+                    <!-- Project 1 -->
+                    <div class="work-slider__content" data-project="1">
+                        <h2 class="work-slider__title">Flight99</h2>
+                        <a href="https://flight99.co.in" target="_blank" rel="noopener noreferrer"
+                            class="work-slider__button">View live site</a>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="work-slider__content" data-project="2">
+                        <h2 class="work-slider__title">DH Timetable</h2>
+                        <a href="https://dhtimetable.vercel.app" target="_blank" rel="noopener noreferrer"
+                            class="work-slider__button">View live site</a>
+                    </div>
+                </div>
+
+                <!-- Descriptions -->
+                <div class="work-slider__descriptions">
+                    <p class="work-slider__description" data-project="1">A full-service travel platform built for
+                        Flight99 Travel Enterprises. Designed around seamless flight search, tour package browsing, and
+                        visa service flows — balancing trust and speed for a high-conversion travel booking experience.
+                    </p>
+                    <p class="work-slider__description" data-project="2">A smart timetable distribution app built for
+                        university students who hate complexity. Features home-screen widgets for iOS and Android so
+                        students can check their schedule without ever opening the app — zero friction, designed for
+                        daily use.</p>
+                </div>
+
+            </section>
+        </div>
+        <!-- End work-hero-wrapper -->
+
+        <!-- ═══ 02 — ARCHIVE FOLDERS ═══ -->
+        <div class="work-folders">
+            <div class="sec-label">02 — The Archive</div>
+            <h2>BROWSE THE <em>folders</em></h2>
+
+            <div class="folders-grid">
+
+                <!-- Web & Interaction -->
+                <div class="folder" onclick="window.location='#'">
+                    <div class="folder__tab">
+                        <div class="folder__dot" style="background:#ff3c00"></div>
+                        <div class="folder__dot" style="background:#ffb300"></div>
+                        <div class="folder__dot" style="background:#00c853"></div>
+                        <span class="folder__tab-label">Web & Interaction</span>
+                    </div>
+                    <div class="folder__previews">
+                        <div class="folder__thumb"><img src="/assets/flight99_scroll.webp" alt="Flight99"></div>
+                        <div class="folder__thumb"><img src="/assets/dhtimetable_scroll.webp" alt="DH Timetable"></div>
+                    </div>
+                    <div class="folder__meta">
+                        <div class="folder__name">Web & Interaction</div>
+                        <div class="folder__count">2 projects</div>
+                    </div>
+                </div>
+
+                <!-- Brand & Identity -->
+                <div class="folder">
+                    <div class="folder__tab">
+                        <div class="folder__dot" style="background:#c084d1"></div>
+                        <div class="folder__dot" style="background:#9c27b0"></div>
+                        <div class="folder__dot" style="background:#7b1fa2"></div>
+                        <span class="folder__tab-label">Brand & Identity</span>
+                    </div>
+                    <div class="folder__previews">
+                        <div class="folder__thumb empty">Coming</div>
+                        <div class="folder__thumb empty">Soon</div>
+                    </div>
+                    <div class="folder__meta">
+                        <div class="folder__name">Brand & Visual Identity</div>
+                        <div class="folder__count">Coming soon</div>
+                    </div>
+                </div>
+
+                <!-- Editorial & Print -->
+                <div class="folder">
+                    <div class="folder__tab">
+                        <div class="folder__dot" style="background:#ffb300"></div>
+                        <div class="folder__dot" style="background:#ff6f00"></div>
+                        <div class="folder__dot" style="background:#e65100"></div>
+                        <span class="folder__tab-label">Editorial & Print</span>
+                    </div>
+                    <div class="folder__previews">
+                        <div class="folder__thumb empty">Coming</div>
+                        <div class="folder__thumb empty">Soon</div>
+                    </div>
+                    <div class="folder__meta">
+                        <div class="folder__name">Editorial & Print</div>
+                        <div class="folder__count">Coming soon</div>
+                    </div>
+                </div>
+
+                <!-- The Lab -->
+                <div class="folder">
+                    <div class="folder__tab">
+                        <div class="folder__dot" style="background:#c084d1"></div>
+                        <div class="folder__dot" style="background:#ff3c00"></div>
+                        <div class="folder__dot" style="background:#c084d1"></div>
+                        <span class="folder__tab-label">The Lab</span>
+                    </div>
+                    <div class="folder__previews">
+                        <div class="folder__thumb empty" style="background:linear-gradient(135deg,#1a0a20,#0a0a1a)">
+                            Experiments</div>
+                        <div class="folder__thumb empty" style="background:linear-gradient(135deg,#1a0500,#0a0a0a)">
+                            Playground</div>
+                    </div>
+                    <div class="folder__meta">
+                        <div class="folder__name">The Lab / Playground</div>
+                        <div class="folder__count">Coming soon</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ═══ CONTACT (same as homepage/ref) ═══ -->
+        <section class="section" id="contact">
+            <div class="section-content">
+                <h2>Let's work <em>together</em></h2>
+                <p>I'm always looking for new projects and collaborations. If you have a project in mind, or just want
+                    to say hello, please get in touch.</p>
+                <div class="contact__info">
+                    <p>Ammar Ali</p>
+                    <p><a href="mailto:itsmeammarali@gmail.com" style="text-decoration:none">itsmeammarali@gmail.com</a>
+                    </p>
+                </div>
+                <div class="contact__links">
+                    <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div
+                style="display:flex;justify-content:space-between;align-items:center;width:100%;padding:0 2rem;box-sizing:border-box;">
+                <p style="margin:0;">© 2026 Ammar Ali. Digital Designer & Vibe Coder.</p>
+                <p style="margin:0;font-size:0.85em;opacity:0.7;">inspired by <a href="https://marimba.design"
+                        target="_blank" rel="noopener noreferrer"
+                        style="color:#ff3c00;text-decoration:none;border-bottom:1px dotted #c084d1;">marimba.design</a>
+                </p>
+            </div>
+        </footer>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="/js/main.js" defer></script>
+
+</body>
+
+</html>

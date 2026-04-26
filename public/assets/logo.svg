@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <style>
+    text {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: bold;
+      fill: #e8e3d5;
+    }
+  </style>
+  <text x="50%" y="30" text-anchor="middle" font-size="36" letter-spacing="-0.02em">creative.</text>
+  <text x="50%" y="65" text-anchor="middle" font-size="34" letter-spacing="-0.02em">designs</text>
+</svg>
