@@ -327,11 +327,18 @@
             gap: 10px;
         }
         .gallery-plus {
-            font-size: 2rem;
+            font-size: 2.2rem;
             line-height: 1;
             font-weight: 300;
             cursor: pointer;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
+        .gallery-plus:hover { transform: translateX(-10px); }
         .gallery-title {
             font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 600;
@@ -339,6 +346,13 @@
             line-height: 0.9;
             margin-top: 20px;
             letter-spacing: -0.04em;
+        }
+        .gallery-title em {
+            font-family: 'Instrument Serif', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: #c084d1;
+            text-transform: none;
         }
         .gallery-nav-columns {
             display: flex;
@@ -476,7 +490,7 @@
     <div class="gallery-modal" id="gallery-modal">
         <div class="gallery-top-bar">
             <div class="gallery-brand-section">
-                <div class="gallery-plus" onclick="closeGallery()">+</div>
+                <div class="gallery-plus" onclick="closeGallery()">←</div>
                 <h2 class="gallery-title" id="gallery-title-text">BRANDING</h2>
             </div>
             <div class="gallery-nav-columns">
@@ -790,7 +804,7 @@
             if (!folder) return;
 
             currentGalleryImages = folder.images;
-            document.getElementById('gallery-title-text').innerHTML = folder.title.replace(/<[^>]*>/g, ''); // Strip em tags for this clean look
+            document.getElementById('gallery-title-text').innerHTML = folder.title;
             
             const mainContainer = document.getElementById('gallery-items-container');
             const thumbContainer = document.getElementById('gallery-thumbs-container');
