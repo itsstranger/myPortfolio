@@ -139,87 +139,99 @@
         <div class="section-content">
           <div class="ipad-showcase"
             style="display: flex; flex-direction: column; width: 100%; align-items: center; margin-top: 4rem;">
-          <div class="featured-showcase">
-            <div class="featured-showcase__content">
-              <div class="sec-label">Featured Work</div>
-              <div class="showcase-text-area">
-                <h2 id="showcase-title" class="showcase-title">Flight99</h2>
-                <p id="showcase-description" class="showcase-description">A full-service travel platform balancing trust and speed for a high-conversion booking experience.</p>
-                <div class="showcase-cta">
-                  <a href="work.html" class="pill-button pill-button--purple">View Work</a>
+          <div class="large-tablet-preview">
+            <div class="ipad-frame">
+              <div class="ipad-screen">
+                <!-- Mini version of the work-slider -->
+                <div class="mini-slider">
+                  <div class="mini-slider__media-side">
+                    <img id="mini-img-1" src="/assets/flight99_scroll.webp" class="mini-img active">
+                    <img id="mini-img-2" src="/assets/dhtimetable_scroll.webp" class="mini-img">
+                  </div>
+                  <div class="mini-slider__text-side">
+                    <div class="mini-slider__counter">01 / 02</div>
+                    <h3 id="mini-title" class="mini-title">Flight99</h3>
+                    <p id="mini-desc" class="mini-desc">Full-service travel platform balancing trust and speed.</p>
+                  </div>
                 </div>
               </div>
+              
+              <!-- Floating 'View Work' Diamond -->
+              <a href="work.html" class="work-view-diamond">
+                <svg viewBox="0 0 45 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M43.6466 13.3979C32.8541 13.3979 25.712 9.10371 22.228 1.00019" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M43.6466 13.398C32.8541 13.3979 25.712 17.6922 22.228 25.7957" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M42.8208 13.398L1 13.3979" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span>View work</span>
+              </a>
             </div>
 
-            <div class="featured-showcase__visual">
-              <div class="ipad-frame">
-                <div class="ipad-screen">
-                  <img id="showcase-img-1" src="/assets/flight99_scroll.webp" class="showcase-img active">
-                  <img id="showcase-img-2" src="/assets/dhtimetable_scroll.webp" class="showcase-img">
-                </div>
-              </div>
-              <div class="showcase-pagination">
-                <span class="showcase-dot active" data-index="0"></span>
-                <span class="showcase-dot" data-index="1"></span>
-              </div>
+            <div class="showcase-pagination">
+              <span class="showcase-dot active" data-index="0"></span>
+              <span class="showcase-dot" data-index="1"></span>
             </div>
           </div>
 
           <script>
             (function () {
-              const titleEl = document.getElementById('showcase-title');
-              const descEl = document.getElementById('showcase-description');
-              const img1 = document.getElementById('showcase-img-1');
-              const img2 = document.getElementById('showcase-img-2');
+              const titleEl = document.getElementById('mini-title');
+              const descEl = document.getElementById('mini-desc');
+              const img1 = document.getElementById('mini-img-1');
+              const img2 = document.getElementById('mini-img-2');
+              const counterEl = document.querySelector('.mini-slider__counter');
               const dots = document.querySelectorAll('.showcase-dot');
 
               const projects = [
                 { 
                   title: 'Flight99', 
-                  desc: 'A full-service travel platform balancing trust and speed for a high-conversion booking experience.' 
+                  desc: 'Full-service travel platform balancing trust and speed.',
+                  counter: '01 / 02'
                 },
                 { 
                   title: 'DH Timetable', 
-                  desc: 'A smart timetable distribution app with home-screen widgets designed for university students who hate complexity.' 
+                  desc: 'Smart timetable app with home-screen widgets.',
+                  counter: '02 / 02'
                 }
               ];
 
               let current = 0;
 
               function updateShowcase(index) {
-                // Fade out text
+                current = index;
+                
+                // Update text with quick fade
                 titleEl.style.opacity = '0';
                 descEl.style.opacity = '0';
                 
                 setTimeout(() => {
-                  current = index;
                   titleEl.textContent = projects[current].title;
                   descEl.textContent = projects[current].desc;
+                  counterEl.textContent = projects[current].counter;
                   
-                  // Toggle images
-                  if (current === 0) {
-                    img1.classList.add('active');
-                    img2.classList.remove('active');
-                  } else {
-                    img1.classList.remove('active');
-                    img2.classList.add('active');
-                  }
-
-                  // Update dots
-                  dots.forEach((dot, i) => {
-                    dot.classList.toggle('active', i === current);
-                  });
-
-                  // Fade in text
                   titleEl.style.opacity = '1';
                   descEl.style.opacity = '1';
-                }, 500);
+                }, 300);
+
+                // Toggle images
+                if (current === 0) {
+                  img1.classList.add('active');
+                  img2.classList.remove('active');
+                } else {
+                  img1.classList.remove('active');
+                  img2.classList.add('active');
+                }
+
+                // Update dots
+                dots.forEach((dot, i) => {
+                  dot.classList.toggle('active', i === current);
+                });
               }
 
               setInterval(() => {
                 let next = (current + 1) % projects.length;
                 updateShowcase(next);
-              }, 5000);
+              }, 4500);
             })();
           </script>
         </div>
