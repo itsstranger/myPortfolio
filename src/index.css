@@ -3945,3 +3945,9 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, li {
     transform: none !important;
     box-shadow: inset 0 0 10px rgba(0,0,0,0.8) !important;
 }
+
+/* Hide Vercel Feedback / Toolbar */
+vercel-live-feedback,
+vercel-toolbar {
+    display: none !important;
+}
