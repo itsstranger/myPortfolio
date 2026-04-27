@@ -266,10 +266,10 @@ body.is-loading {
     }
 }
 .loader-logo {
-    transform: scale(.8);
+    transform: scale(.7);
     position: relative;
-    width: clamp(200px, 40vw, 400px);
-    aspect-ratio: 300 / 120;
+    width: clamp(180px, 35vw, 360px);
+    aspect-ratio: 128 / 38;
 }
 
 .loader-logo-outline {
@@ -431,8 +431,8 @@ main {
 }
 
 .brand-logo {
-    height: auto;
-    width: 160px;
+    height: 2.5rem;
+    width: auto;
     display: block;
 }
 
