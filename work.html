@@ -516,6 +516,12 @@
             <div class="gallery-thumbs-strip" id="gallery-thumbs-container">
                 <!-- Mini thumbnails dynamic -->
             </div>
+            <div class="gallery-category-tags" id="gallery-tags-container">
+                <div>ARCHI</div>
+                <div>BRAND</div>
+                <div>EDITORIAL</div>
+                <div>JOURNAL</div>
+            </div>
         </div>
     </div>
 
@@ -570,20 +576,20 @@
                 <!-- Laptop mockup area (left) -->
                 <div class="work-slider__laptop">
                     <div class="work-slider__media-container">
-                        <!-- Project 1: Identity Showcase (Split Screen) -->
-                        <div class="work-slider__media" data-project="1" style="width:100%; height:100%; display:flex; background:#000;">
-                            <div style="flex:1; background:#fff; display:flex; align-items:center; justify-content:center; padding:5%;">
-                                <img src="/seed/featured/hand_logo.png" style="max-width:100%; max-height:100%; object-fit:contain;">
-                            </div>
-                            <div style="flex:1; background:#647656; display:flex; align-items:center; justify-content:center; padding:5%;">
-                                <img src="/seed/featured/ma_cafe.png" style="max-width:100%; max-height:100%; object-fit:contain;">
-                            </div>
-                        </div>
+                        <!-- Project 1: WAFD Identity -->
+                        <img class="work-slider__media" data-project="1" src="/seed/logos -general/wafd.png"
+                            alt="WAFD Identity" style="width:100%;height:100%;object-fit:contain;padding:10%;">
+
+                        <!-- Project 2: Lab Experiment -->
+                        <img class="work-slider__media" data-project="2" src="/seed/lab/nabi dinam.png"
+                            alt="Lab Experiment"
+                            style="width:100%;height:100%;object-fit:contain;padding:10%;">
                     </div>
 
                     <!-- Pagination dots -->
                     <div class="work-slider__pagination">
                         <div class="work-slider__dot" data-index="0"></div>
+                        <div class="work-slider__dot" data-index="1"></div>
                     </div>
                 </div>
 
@@ -596,20 +602,27 @@
                             <span class="work-slider__counter-current" data-project="2">02</span>
                         </span>
                         <span class="work-slider__counter-separator">/</span>
-                        <span class="work-slider__counter-total">01</span>
+                        <span class="work-slider__counter-total">02</span>
                     </div>
 
                     <!-- Project 1 -->
                     <div class="work-slider__content" data-project="1">
-                        <h2 class="work-slider__title">BRANDING & IDENTITY</h2>
+                        <h2 class="work-slider__title">WAFD IDENTITY</h2>
                         <a href="#contact" class="work-slider__button">Inquire for projects</a>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="work-slider__content" data-project="2">
+                        <h2 class="work-slider__title">THE LAB / 01</h2>
+                        <a href="work.html" class="work-slider__button">Browse the archive</a>
                     </div>
                 </div>
 
                 <!-- Descriptions -->
                 <div class="work-slider__descriptions">
-                    <p class="work-slider__description" data-project="1">A collection of identity works exploring contrast and character. From the bold, expressive lines of the "HAND" logo to the playful, organic personality of "MA Cafe & Grill," these projects define brand voice through craft.
+                    <p class="work-slider__description" data-project="1">A minimalist typographic identity for WAFD. The project explored geometric balance and corporate trust through simple, high-contrast forms designed for digital-first applications.
                     </p>
+                    <p class="work-slider__description" data-project="2">A visual study from The Lab, blending traditional calligraphy with modern digital lighting. This piece explores the tension between timeless heritage and future-facing aesthetics.</p>
                 </div>
 
             </section>
