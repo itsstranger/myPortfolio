@@ -164,92 +164,11 @@
             opacity: 0.4;
         }
 
-        /* ── Kinetic Featured Canvas ── */
-        .featured-canvas {
-            position: relative;
-            height: 200vh; /* Pinned area */
-            background: #0a0a0a;
-            overflow: hidden;
-        }
-        .canvas-sticky {
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-        }
-        .canvas-bg-text {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-            white-space: nowrap;
-            font-size: 35vh;
-            font-weight: 900;
-            line-height: 1;
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(232, 227, 213, 0.05);
-            text-transform: uppercase;
-            pointer-events: none;
-            z-index: 1;
-        }
-        .canvas-items-container {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            gap: 15vw;
-            padding: 0 15vw;
-            will-change: transform;
-        }
-        .canvas-project {
-            flex-shrink: 0;
-            width: 75vw;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-        .canvas-img-wrapper {
-            width: 100%;
-            height: 65vh;
-            overflow: hidden;
-            border-radius: 2px;
-            background: #111;
-        }
-        .canvas-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top;
-            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .canvas-project:hover img {
-            transform: scale(1.05);
-        }
-        .canvas-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-        }
-        .canvas-project-title {
-            font-size: clamp(2.5rem, 6vw, 6rem);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: -0.05em;
-            line-height: 0.9;
-        }
-        .canvas-project-type {
-            font-family: 'Instrument Serif', serif;
-            font-style: italic;
-            font-size: 2rem;
-            color: #c084d1;
-        }
-
         /* ── Folders section ── */
         .work-folders {
             padding: 5rem 50px;
             border-top: 1px solid rgba(255, 255, 255, 0.07);
-            margin-top: 0; /* No longer overlapping since we removed the previous section */
+            margin-top: -50vh;
             position: relative;
             z-index: 10;
             background: #0a0a0a;
@@ -637,37 +556,78 @@
             <span class="header-location">Based in Kerala, India</span>
         </div>
 
-        <!-- ═══ 01 — KINETIC CANVAS (Novel Featured Section) ═══ -->
-        <section class="featured-canvas" id="featured-canvas">
-            <div class="canvas-sticky">
-                <div class="canvas-bg-text" id="canvas-bg-text">FLIGHT99 — DH TIMETABLE — SELECTED — WORKS — </div>
-                <div class="canvas-items-container" id="canvas-items-container">
-                    
+        <!-- ═══ 01 — FEATURED SLIDER (mirrors ref structure exactly) ═══ -->
+        <div class="work-hero-wrapper">
+
+            <!-- Intro -->
+            <section class="work-intro">
+                <div class="work-intro__container">
+                    <h1 class="work-intro__heading">Selected <em
+                            style="font-family:'Instrument Serif',serif; font-style:italic; font-weight:400; color:#c084d1;">work</em>
+                    </h1>
+                    <p class="work-intro__description">Every project is shaped around the client — not a template — with
+                        a focus on clarity, character, and craft.</p>
+                </div>
+            </section>
+
+            <!-- Pinned Slider -->
+            <section class="work-slider">
+
+                <!-- Laptop mockup area (left) -->
+                <div class="work-slider__laptop">
+                    <div class="work-slider__media-container">
+                        <!-- Project 1: WAFD Identity -->
+                        <img class="work-slider__media" data-project="1" src="/seed/logos -general/wafd.png"
+                            alt="WAFD Identity" style="width:100%;height:100%;object-fit:contain;padding:10%;">
+
+                        <!-- Project 2: Lab Experiment -->
+                        <img class="work-slider__media" data-project="2" src="/seed/lab/nabi dinam.png"
+                            alt="Lab Experiment"
+                            style="width:100%;height:100%;object-fit:contain;padding:10%;">
+                    </div>
+
+                    <!-- Pagination dots -->
+                    <div class="work-slider__pagination">
+                        <div class="work-slider__dot" data-index="0"></div>
+                        <div class="work-slider__dot" data-index="1"></div>
+                    </div>
+                </div>
+
+                <!-- Right panel: counter + title + description -->
+                <div class="work-slider__content-wrapper">
+                    <!-- Counter -->
+                    <div class="work-slider__counter-fixed">
+                        <span class="work-slider__counter-current-wrapper">
+                            <span class="work-slider__counter-current" data-project="1">01</span>
+                            <span class="work-slider__counter-current" data-project="2">02</span>
+                        </span>
+                        <span class="work-slider__counter-separator">/</span>
+                        <span class="work-slider__counter-total">02</span>
+                    </div>
+
                     <!-- Project 1 -->
-                    <div class="canvas-project">
-                        <div class="canvas-img-wrapper">
-                            <img src="/assets/flight99_scroll.webp" alt="Flight99">
-                        </div>
-                        <div class="canvas-meta">
-                            <h3 class="canvas-project-title">Flight99</h3>
-                            <span class="canvas-project-type">Digital Platform</span>
-                        </div>
+                    <div class="work-slider__content" data-project="1">
+                        <h2 class="work-slider__title">WAFD IDENTITY</h2>
+                        <a href="#contact" class="work-slider__button">Inquire for projects</a>
                     </div>
 
                     <!-- Project 2 -->
-                    <div class="canvas-project">
-                        <div class="canvas-img-wrapper">
-                            <img src="/assets/dhtimetable_scroll.webp" alt="DH Timetable">
-                        </div>
-                        <div class="canvas-meta">
-                            <h3 class="canvas-project-title">DH Timetable</h3>
-                            <span class="canvas-project-type">Mobile Utility</span>
-                        </div>
+                    <div class="work-slider__content" data-project="2">
+                        <h2 class="work-slider__title">THE LAB / 01</h2>
+                        <a href="work.html" class="work-slider__button">Browse the archive</a>
                     </div>
-
                 </div>
-            </div>
-        </section>
+
+                <!-- Descriptions -->
+                <div class="work-slider__descriptions">
+                    <p class="work-slider__description" data-project="1">A minimalist typographic identity for WAFD. The project explored geometric balance and corporate trust through simple, high-contrast forms designed for digital-first applications.
+                    </p>
+                    <p class="work-slider__description" data-project="2">A visual study from The Lab, blending traditional calligraphy with modern digital lighting. This piece explores the tension between timeless heritage and future-facing aesthetics.</p>
+                </div>
+
+            </section>
+        </div>
+        <!-- End work-hero-wrapper -->
 
         <!-- ═══ 02 — ARCHIVE FOLDERS ═══ -->
         <div class="work-folders">
@@ -890,41 +850,6 @@
             const lb = document.getElementById('lightbox');
             gsap.to(lb, { opacity: 0, duration: 0.3, onComplete: () => lb.classList.remove('is-active') });
         }
-
-        function initFeaturedCanvas() {
-            const canvas = document.getElementById('featured-canvas');
-            const container = document.getElementById('canvas-items-container');
-            const bgText = document.getElementById('canvas-bg-text');
-            if (!canvas || !container || !bgText) return;
-
-            // Horizontal scroll for items
-            gsap.to(container, {
-                x: () => -(container.scrollWidth - window.innerWidth),
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: canvas,
-                    start: 'top top',
-                    end: 'bottom bottom',
-                    scrub: 1,
-                    invalidateOnRefresh: true
-                }
-            });
-
-            // Parallax for background text (moves slower)
-            gsap.to(bgText, {
-                x: () => -(bgText.scrollWidth * 0.2),
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: canvas,
-                    start: 'top top',
-                    end: 'bottom bottom',
-                    scrub: 2,
-                    invalidateOnRefresh: true
-                }
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', initFeaturedCanvas);
 
         // Close on ESC
         document.addEventListener('keydown', (e) => {
