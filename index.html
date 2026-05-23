@@ -45,9 +45,16 @@
     }
     window.scrollTo(0, 0);
   </script>
+  <style>
+    /* Prevent FOUC (Flash of Unstyled Content) before CSS/JS loads */
+    body.is-loading .header,
+    body.is-loading .hero {
+      opacity: 0 !important;
+    }
+  </style>
 </head>
 
-<body>
+<body class="is-loading">
   <a href="index.html#main-content" class="skip-link">Skip to main content</a>
   <div class="loader" id="loader" aria-hidden="true">
     <div class="loader-inner">

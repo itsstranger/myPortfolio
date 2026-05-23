@@ -19,6 +19,12 @@
         window.scrollTo(0, 0);
     </script>
     <style>
+        /* Prevent FOUC (Flash of Unstyled Content) before CSS/JS loads */
+        body.is-loading .header,
+        body.is-loading .about-page {
+            opacity: 0 !important;
+        }
+
         /* ══════════════════════════════════════════
            DARK THEME OVERRIDES for about-page
            ══════════════════════════════════════════ */
@@ -138,7 +144,7 @@
         }
     </style>
 </head>
-<body id="about-page">
+<body id="about-page" class="is-loading">
 
     <a href="about.html#main-content" class="skip-link">Skip to main content</a>
 

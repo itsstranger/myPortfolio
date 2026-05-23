@@ -23,6 +23,12 @@
         window.scrollTo(0, 0);
     </script>
     <style>
+        /* Prevent FOUC (Flash of Unstyled Content) before CSS/JS loads */
+        body.is-loading .header,
+        body.is-loading .work-page {
+            opacity: 0 !important;
+        }
+
         /* ══════════════════════════════════════════════
            DARK THEME OVERRIDES — match homepage palette
            ══════════════════════════════════════════════ */
@@ -470,7 +476,7 @@
     </style>
 </head>
 
-<body id="work-page">
+<body id="work-page" class="is-loading">
 
     <!-- Loader -->
     <div class="loader" id="loader" aria-hidden="true">
